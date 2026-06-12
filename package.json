@@ -1,0 +1,44 @@
+{
+  "name": "@wexio/messenger-widget-angular",
+  "version": "1.0.23",
+  "description": "Angular standalone component embed for the Wexio web messenger. Thin wrapper around the <wexio-widget> custom element — same WidgetShell runtime, same Shadow-DOM isolation.",
+  "license": "MIT",
+  "private": false,
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "peerDependencies": {
+    "@angular/common": ">=16.0.0",
+    "@angular/core": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wexiohub/messenger-widget-angular.git"
+  },
+  "homepage": "https://github.com/wexiohub/messenger-widget-angular#readme",
+  "bugs": {
+    "url": "https://github.com/wexiohub/messenger-widget-angular/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prepack": "node scripts/prepack.mjs"
+  }
+}
