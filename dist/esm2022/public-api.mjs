@@ -1,0 +1,11 @@
+/**
+ * Public surface of `@wexio/messenger-widget-angular`. ng-packagr uses
+ * this file as the package entry point (see `ng-package.json`).
+ *
+ * The widget runtime (`widget.js`) is shipped alongside the compiled
+ * Angular library and is copied into `dist/` via `ng-package.json`'s
+ * `assets` block. Consumers don't import `widget.js` directly — the
+ * Angular component registers + uses the custom element at boot.
+ */
+export { WexioWidgetComponent } from "./wexio-widget.component";
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9wdWJsaWMtYXBpLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7OztHQVFHO0FBRUgsT0FBTyxFQUFFLG9CQUFvQixFQUFFLE1BQU0sMEJBQTBCLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIFB1YmxpYyBzdXJmYWNlIG9mIGBAd2V4aW8vbWVzc2VuZ2VyLXdpZGdldC1hbmd1bGFyYC4gbmctcGFja2FnciB1c2VzXG4gKiB0aGlzIGZpbGUgYXMgdGhlIHBhY2thZ2UgZW50cnkgcG9pbnQgKHNlZSBgbmctcGFja2FnZS5qc29uYCkuXG4gKlxuICogVGhlIHdpZGdldCBydW50aW1lIChgd2lkZ2V0LmpzYCkgaXMgc2hpcHBlZCBhbG9uZ3NpZGUgdGhlIGNvbXBpbGVkXG4gKiBBbmd1bGFyIGxpYnJhcnkgYW5kIGlzIGNvcGllZCBpbnRvIGBkaXN0L2AgdmlhIGBuZy1wYWNrYWdlLmpzb25gJ3NcbiAqIGBhc3NldHNgIGJsb2NrLiBDb25zdW1lcnMgZG9uJ3QgaW1wb3J0IGB3aWRnZXQuanNgIGRpcmVjdGx5IOKAlCB0aGVcbiAqIEFuZ3VsYXIgY29tcG9uZW50IHJlZ2lzdGVycyArIHVzZXMgdGhlIGN1c3RvbSBlbGVtZW50IGF0IGJvb3QuXG4gKi9cblxuZXhwb3J0IHsgV2V4aW9XaWRnZXRDb21wb25lbnQgfSBmcm9tIFwiLi93ZXhpby13aWRnZXQuY29tcG9uZW50XCI7XG5leHBvcnQgdHlwZSB7IFZpc2l0b3JJZGVudGl0eSB9IGZyb20gXCIuL3dleGlvLXdpZGdldC5jb21wb25lbnRcIjtcbiJdfQ==
