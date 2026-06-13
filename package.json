@@ -1,6 +1,6 @@
 {
   "name": "@wexio/messenger-widget-angular",
-  "version": "1.0.26",
+  "version": "1.0.27",
   "description": "Angular standalone component embed for the Wexio web messenger. Thin wrapper around the <wexio-widget> custom element — same WidgetShell runtime, same Shadow-DOM isolation.",
   "license": "MIT",
   "private": false,
