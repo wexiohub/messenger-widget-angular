@@ -20,7 +20,7 @@
  *   })
  *   export class AppComponent { ... }
  */
-import { AfterViewInit, ElementRef, EventEmitter, OnChanges, OnDestroy, SimpleChanges } from "@angular/core";
+import { type AfterViewInit, type ElementRef, EventEmitter, type OnChanges, type OnDestroy, type SimpleChanges } from "@angular/core";
 import * as i0 from "@angular/core";
 /** Known-user identity proof. Provide ONE of `googleIdToken`, `jwt`,
  *  or the legacy `userId` + `userHash` pair. */

@@ -7,5 +7,5 @@
  * `assets` block. Consumers don't import `widget.js` directly — the
  * Angular component registers + uses the custom element at boot.
  */
-export { WexioWidgetComponent } from "./wexio-widget.component";
 export type { VisitorIdentity } from "./wexio-widget.component";
+export { WexioWidgetComponent } from "./wexio-widget.component";

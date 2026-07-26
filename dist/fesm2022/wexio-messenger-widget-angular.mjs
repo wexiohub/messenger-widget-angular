@@ -44,8 +44,7 @@ class WexioWidgetComponent {
     close = new EventEmitter();
     elRef;
     onResize = (event) => {
-        const detail = event
-            .detail;
+        const detail = event.detail;
         if (detail)
             this.resize.emit(detail);
     };
