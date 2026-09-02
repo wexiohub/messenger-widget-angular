@@ -1,6 +1,6 @@
 {
   "name": "@wexio/messenger-widget-angular",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Angular standalone component embed for the Wexio web messenger. Thin wrapper around the <wexio-widget> custom element — same WidgetShell runtime, same Shadow-DOM isolation.",
   "license": "MIT",
   "private": false,
@@ -23,7 +23,8 @@
     "dist/*.d.ts",
     "dist/*.d.mts",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "CHANGELOG.md"
   ],
   "dependencies": {
     "tslib": "^2.3.0"
