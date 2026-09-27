@@ -78,7 +78,7 @@ class WexioWidgetComponent {
             el.identify?.(this.user);
     }
     ngOnChanges(changes) {
-        if (changes["user"] && this.elRef?.nativeElement) {
+        if (changes.user && this.elRef?.nativeElement) {
             this.elRef.nativeElement.identify?.(this.user ?? null);
         }
     }
