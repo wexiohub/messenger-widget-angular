@@ -8,6 +8,7 @@ Native Angular standalone component for the [Wexio](https://wexio.io) web messen
 
 🏠 [Website](https://wexio.io)
 📚 [Developer Docs](https://learn.wexio.io/docs/web-widget)
+🎮 [Playground](https://cdn.wexio.io/playground)
 
 ## Features
 
