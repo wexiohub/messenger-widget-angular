@@ -38,8 +38,16 @@ class WexioWidgetComponent {
     prefillPhone;
     /** Known-user identity proof. Pass `null` to log out. */
     user;
+    /** Open the panel on mount (uncontrolled afterwards). */
+    defaultOpen;
+    /** Controlled open state; keep it in sync from `(opened)` / `(close)`. Leave unset for uncontrolled. */
+    open;
+    /** Navigate to a tab / article without a remount (and open the panel). */
+    previewTab;
     /** Fires every time panel dimensions change (open ↔ closed). */
     resize = new EventEmitter();
+    /** Fires when the panel opens. */
+    opened = new EventEmitter();
     /** Fires when the visitor closes the panel. */
     close = new EventEmitter();
     elRef;
@@ -48,6 +56,7 @@ class WexioWidgetComponent {
         if (detail)
             this.resize.emit(detail);
     };
+    onOpen = () => this.opened.emit();
     onClose = () => this.close.emit();
     ngAfterViewInit() {
         const el = this.elRef?.nativeElement;
@@ -73,11 +82,18 @@ class WexioWidgetComponent {
             document.head.appendChild(script);
         }
         el.addEventListener("wexio:resize", this.onResize);
+        el.addEventListener("wexio:open", this.onOpen);
         el.addEventListener("wexio:close", this.onClose);
+        // `previewTab` is an object, so it goes through the element's JS property.
+        if (this.previewTab)
+            el.previewTab = this.previewTab;
         if (this.user)
             el.identify?.(this.user);
     }
     ngOnChanges(changes) {
+        if (changes.previewTab && this.elRef?.nativeElement) {
+            this.elRef.nativeElement.previewTab = this.previewTab;
+        }
         if (changes.user && this.elRef?.nativeElement) {
             this.elRef.nativeElement.identify?.(this.user ?? null);
         }
@@ -87,10 +103,11 @@ class WexioWidgetComponent {
         if (!el)
             return;
         el.removeEventListener("wexio:resize", this.onResize);
+        el.removeEventListener("wexio:open", this.onOpen);
         el.removeEventListener("wexio:close", this.onClose);
     }
     static ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "18.2.14", ngImport: i0, type: WexioWidgetComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
-    static ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "18.2.14", type: WexioWidgetComponent, isStandalone: true, selector: "wexio-widget-ng", inputs: { publicKey: "publicKey", locale: "locale", mode: "mode", prefillName: "prefillName", prefillEmail: "prefillEmail", prefillPhone: "prefillPhone", user: "user" }, outputs: { resize: "resize", close: "close" }, viewQueries: [{ propertyName: "elRef", first: true, predicate: ["el"], descendants: true, static: true }], usesOnChanges: true, ngImport: i0, template: `<wexio-widget
+    static ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "18.2.14", type: WexioWidgetComponent, isStandalone: true, selector: "wexio-widget-ng", inputs: { publicKey: "publicKey", locale: "locale", mode: "mode", prefillName: "prefillName", prefillEmail: "prefillEmail", prefillPhone: "prefillPhone", user: "user", defaultOpen: "defaultOpen", open: "open", previewTab: "previewTab" }, outputs: { resize: "resize", opened: "opened", close: "close" }, viewQueries: [{ propertyName: "elRef", first: true, predicate: ["el"], descendants: true, static: true }], usesOnChanges: true, ngImport: i0, template: `<wexio-widget
     #el
     [attr.public-key]="publicKey ?? null"
     [attr.locale]="locale ?? null"
@@ -98,6 +115,8 @@ class WexioWidgetComponent {
     [attr.prefill-name]="prefillName ?? null"
     [attr.prefill-email]="prefillEmail ?? null"
     [attr.prefill-phone]="prefillPhone ?? null"
+    [attr.default-open]="defaultOpen == null ? null : defaultOpen ? 'true' : 'false'"
+    [attr.open]="open == null ? null : open ? 'true' : 'false'"
   ></wexio-widget>`, isInline: true });
 }
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "18.2.14", ngImport: i0, type: WexioWidgetComponent, decorators: [{
@@ -114,6 +133,8 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "18.2.14", ngImpo
     [attr.prefill-name]="prefillName ?? null"
     [attr.prefill-email]="prefillEmail ?? null"
     [attr.prefill-phone]="prefillPhone ?? null"
+    [attr.default-open]="defaultOpen == null ? null : defaultOpen ? 'true' : 'false'"
+    [attr.open]="open == null ? null : open ? 'true' : 'false'"
   ></wexio-widget>`,
                 }]
         }], propDecorators: { publicKey: [{
@@ -130,7 +151,15 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "18.2.14", ngImpo
                 type: Input
             }], user: [{
                 type: Input
+            }], defaultOpen: [{
+                type: Input
+            }], open: [{
+                type: Input
+            }], previewTab: [{
+                type: Input
             }], resize: [{
+                type: Output
+            }], opened: [{
                 type: Output
             }], close: [{
                 type: Output

@@ -34,8 +34,22 @@ export interface VisitorIdentity {
     phone?: string;
     attributes?: Record<string, unknown>;
 }
+/** Navigation request: go to a tab (and optionally a help article / news post)
+ *  without a remount and open the panel. A new `nonce` re-issues the request. */
+export interface PreviewTabSignal {
+    tab: "home" | "messages" | "help" | "news" | "profile";
+    nonce: number;
+    article?: {
+        kind: "help";
+        slug: string;
+    } | {
+        kind: "news";
+        id: string;
+    };
+}
 interface WexioWidgetElement extends HTMLElement {
     identify(user: VisitorIdentity | null): void;
+    previewTab?: PreviewTabSignal;
 }
 export declare class WexioWidgetComponent implements AfterViewInit, OnChanges, OnDestroy {
     /** Wexio integration public key (`pk_live_...`). Omit for demo mode. */
@@ -52,20 +66,29 @@ export declare class WexioWidgetComponent implements AfterViewInit, OnChanges, O
     prefillPhone?: string;
     /** Known-user identity proof. Pass `null` to log out. */
     user?: VisitorIdentity | null;
+    /** Open the panel on mount (uncontrolled afterwards). */
+    defaultOpen?: boolean;
+    /** Controlled open state; keep it in sync from `(opened)` / `(close)`. Leave unset for uncontrolled. */
+    open?: boolean;
+    /** Navigate to a tab / article without a remount (and open the panel). */
+    previewTab?: PreviewTabSignal;
     /** Fires every time panel dimensions change (open ↔ closed). */
     resize: EventEmitter<{
         width: number;
         height: number;
     }>;
+    /** Fires when the panel opens. */
+    opened: EventEmitter<void>;
     /** Fires when the visitor closes the panel. */
     close: EventEmitter<void>;
     elRef: ElementRef<WexioWidgetElement>;
     private onResize;
+    private onOpen;
     private onClose;
     ngAfterViewInit(): void;
     ngOnChanges(changes: SimpleChanges): void;
     ngOnDestroy(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<WexioWidgetComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<WexioWidgetComponent, "wexio-widget-ng", never, { "publicKey": { "alias": "publicKey"; "required": false; }; "locale": { "alias": "locale"; "required": false; }; "mode": { "alias": "mode"; "required": false; }; "prefillName": { "alias": "prefillName"; "required": false; }; "prefillEmail": { "alias": "prefillEmail"; "required": false; }; "prefillPhone": { "alias": "prefillPhone"; "required": false; }; "user": { "alias": "user"; "required": false; }; }, { "resize": "resize"; "close": "close"; }, never, never, true, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<WexioWidgetComponent, "wexio-widget-ng", never, { "publicKey": { "alias": "publicKey"; "required": false; }; "locale": { "alias": "locale"; "required": false; }; "mode": { "alias": "mode"; "required": false; }; "prefillName": { "alias": "prefillName"; "required": false; }; "prefillEmail": { "alias": "prefillEmail"; "required": false; }; "prefillPhone": { "alias": "prefillPhone"; "required": false; }; "user": { "alias": "user"; "required": false; }; "defaultOpen": { "alias": "defaultOpen"; "required": false; }; "open": { "alias": "open"; "required": false; }; "previewTab": { "alias": "previewTab"; "required": false; }; }, { "resize": "resize"; "opened": "opened"; "close": "close"; }, never, never, true, never>;
 }
 export {};

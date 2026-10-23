@@ -114,12 +114,16 @@ export class AppComponent {
 | `prefillEmail` | `string`                      | Unverified prechat prefill.                                                        |
 | `prefillPhone` | `string`                      | Unverified prechat prefill.                                                        |
 | `user`         | `VisitorIdentity \| null`     | Known-user identity proof. Pass `null` to log out.                                |
+| `defaultOpen`  | `boolean`                     | Open the panel on mount (uncontrolled afterwards).                                |
+| `open`         | `boolean`                     | Controlled open state; keep it in sync from `(opened)` / `(close)`. Leave unset for uncontrolled. |
+| `previewTab`   | `PreviewTabSignal`            | Navigate to a tab (`{ tab, nonce, article? }`) without a remount; opens the panel. A new `nonce` re-issues the request. |
 
 ## Outputs
 
 | Output    | Payload                                | When                                                |
 | --------- | -------------------------------------- | --------------------------------------------------- |
 | `resize`  | `{ width: number; height: number }`    | Panel dimensions changed (open ↔ closed). |
+| `opened`  | `void`                                  | The panel opened.                                    |
 | `close`   | `void`                                  | Visitor closed the panel.                            |
 
 ```ts
