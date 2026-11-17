@@ -117,6 +117,7 @@ export class AppComponent {
 | `defaultOpen`  | `boolean`                     | Open the panel on mount (uncontrolled afterwards).                                |
 | `open`         | `boolean`                     | Controlled open state; keep it in sync from `(opened)` / `(close)`. Leave unset for uncontrolled. |
 | `previewTab`   | `PreviewTabSignal`            | Navigate to a tab (`{ tab, nonce, article? }`) without a remount; opens the panel. A new `nonce` re-issues the request. |
+| `bookingServices` | `string[]` | Host narrowing of the booking services: only these service ids are offered (it only narrows; the allow-list stays server-side). |
 
 ## Outputs
 

@@ -50,6 +50,7 @@ export interface PreviewTabSignal {
 interface WexioWidgetElement extends HTMLElement {
     identify(user: VisitorIdentity | null): void;
     previewTab?: PreviewTabSignal;
+    bookingServices?: string[];
 }
 export declare class WexioWidgetComponent implements AfterViewInit, OnChanges, OnDestroy {
     /** Wexio integration public key (`pk_live_...`). Omit for demo mode. */
@@ -72,6 +73,8 @@ export declare class WexioWidgetComponent implements AfterViewInit, OnChanges, O
     open?: boolean;
     /** Navigate to a tab / article without a remount (and open the panel). */
     previewTab?: PreviewTabSignal;
+    /** Host narrowing of the booking services (`booking.services`): only these service ids are offered. */
+    bookingServices?: string[];
     /** Fires every time panel dimensions change (open ↔ closed). */
     resize: EventEmitter<{
         width: number;
@@ -89,6 +92,6 @@ export declare class WexioWidgetComponent implements AfterViewInit, OnChanges, O
     ngOnChanges(changes: SimpleChanges): void;
     ngOnDestroy(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<WexioWidgetComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<WexioWidgetComponent, "wexio-widget-ng", never, { "publicKey": { "alias": "publicKey"; "required": false; }; "locale": { "alias": "locale"; "required": false; }; "mode": { "alias": "mode"; "required": false; }; "prefillName": { "alias": "prefillName"; "required": false; }; "prefillEmail": { "alias": "prefillEmail"; "required": false; }; "prefillPhone": { "alias": "prefillPhone"; "required": false; }; "user": { "alias": "user"; "required": false; }; "defaultOpen": { "alias": "defaultOpen"; "required": false; }; "open": { "alias": "open"; "required": false; }; "previewTab": { "alias": "previewTab"; "required": false; }; }, { "resize": "resize"; "opened": "opened"; "close": "close"; }, never, never, true, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<WexioWidgetComponent, "wexio-widget-ng", never, { "publicKey": { "alias": "publicKey"; "required": false; }; "locale": { "alias": "locale"; "required": false; }; "mode": { "alias": "mode"; "required": false; }; "prefillName": { "alias": "prefillName"; "required": false; }; "prefillEmail": { "alias": "prefillEmail"; "required": false; }; "prefillPhone": { "alias": "prefillPhone"; "required": false; }; "user": { "alias": "user"; "required": false; }; "defaultOpen": { "alias": "defaultOpen"; "required": false; }; "open": { "alias": "open"; "required": false; }; "previewTab": { "alias": "previewTab"; "required": false; }; "bookingServices": { "alias": "bookingServices"; "required": false; }; }, { "resize": "resize"; "opened": "opened"; "close": "close"; }, never, never, true, never>;
 }
 export {};

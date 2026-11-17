@@ -44,6 +44,8 @@ class WexioWidgetComponent {
     open;
     /** Navigate to a tab / article without a remount (and open the panel). */
     previewTab;
+    /** Host narrowing of the booking services (`booking.services`): only these service ids are offered. */
+    bookingServices;
     /** Fires every time panel dimensions change (open ↔ closed). */
     resize = new EventEmitter();
     /** Fires when the panel opens. */
@@ -87,12 +89,18 @@ class WexioWidgetComponent {
         // `previewTab` is an object, so it goes through the element's JS property.
         if (this.previewTab)
             el.previewTab = this.previewTab;
+        // An array, so it too goes through the element's JS property.
+        if (this.bookingServices)
+            el.bookingServices = this.bookingServices;
         if (this.user)
             el.identify?.(this.user);
     }
     ngOnChanges(changes) {
         if (changes.previewTab && this.elRef?.nativeElement) {
             this.elRef.nativeElement.previewTab = this.previewTab;
+        }
+        if (changes.bookingServices && this.elRef?.nativeElement) {
+            this.elRef.nativeElement.bookingServices = this.bookingServices;
         }
         if (changes.user && this.elRef?.nativeElement) {
             this.elRef.nativeElement.identify?.(this.user ?? null);
@@ -107,7 +115,7 @@ class WexioWidgetComponent {
         el.removeEventListener("wexio:close", this.onClose);
     }
     static ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "18.2.14", ngImport: i0, type: WexioWidgetComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
-    static ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "18.2.14", type: WexioWidgetComponent, isStandalone: true, selector: "wexio-widget-ng", inputs: { publicKey: "publicKey", locale: "locale", mode: "mode", prefillName: "prefillName", prefillEmail: "prefillEmail", prefillPhone: "prefillPhone", user: "user", defaultOpen: "defaultOpen", open: "open", previewTab: "previewTab" }, outputs: { resize: "resize", opened: "opened", close: "close" }, viewQueries: [{ propertyName: "elRef", first: true, predicate: ["el"], descendants: true, static: true }], usesOnChanges: true, ngImport: i0, template: `<wexio-widget
+    static ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "18.2.14", type: WexioWidgetComponent, isStandalone: true, selector: "wexio-widget-ng", inputs: { publicKey: "publicKey", locale: "locale", mode: "mode", prefillName: "prefillName", prefillEmail: "prefillEmail", prefillPhone: "prefillPhone", user: "user", defaultOpen: "defaultOpen", open: "open", previewTab: "previewTab", bookingServices: "bookingServices" }, outputs: { resize: "resize", opened: "opened", close: "close" }, viewQueries: [{ propertyName: "elRef", first: true, predicate: ["el"], descendants: true, static: true }], usesOnChanges: true, ngImport: i0, template: `<wexio-widget
     #el
     [attr.public-key]="publicKey ?? null"
     [attr.locale]="locale ?? null"
@@ -156,6 +164,8 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "18.2.14", ngImpo
             }], open: [{
                 type: Input
             }], previewTab: [{
+                type: Input
+            }], bookingServices: [{
                 type: Input
             }], resize: [{
                 type: Output
