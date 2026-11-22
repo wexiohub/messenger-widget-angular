@@ -114,8 +114,8 @@ class WexioWidgetComponent {
         el.removeEventListener("wexio:open", this.onOpen);
         el.removeEventListener("wexio:close", this.onClose);
     }
-    static ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "18.2.14", ngImport: i0, type: WexioWidgetComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
-    static ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "18.2.14", type: WexioWidgetComponent, isStandalone: true, selector: "wexio-widget-ng", inputs: { publicKey: "publicKey", locale: "locale", mode: "mode", prefillName: "prefillName", prefillEmail: "prefillEmail", prefillPhone: "prefillPhone", user: "user", defaultOpen: "defaultOpen", open: "open", previewTab: "previewTab", bookingServices: "bookingServices" }, outputs: { resize: "resize", opened: "opened", close: "close" }, viewQueries: [{ propertyName: "elRef", first: true, predicate: ["el"], descendants: true, static: true }], usesOnChanges: true, ngImport: i0, template: `<wexio-widget
+    static ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "20.3.35", ngImport: i0, type: WexioWidgetComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
+    static ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "20.3.35", type: WexioWidgetComponent, isStandalone: true, selector: "wexio-widget-ng", inputs: { publicKey: "publicKey", locale: "locale", mode: "mode", prefillName: "prefillName", prefillEmail: "prefillEmail", prefillPhone: "prefillPhone", user: "user", defaultOpen: "defaultOpen", open: "open", previewTab: "previewTab", bookingServices: "bookingServices" }, outputs: { resize: "resize", opened: "opened", close: "close" }, viewQueries: [{ propertyName: "elRef", first: true, predicate: ["el"], descendants: true, static: true }], usesOnChanges: true, ngImport: i0, template: `<wexio-widget
     #el
     [attr.public-key]="publicKey ?? null"
     [attr.locale]="locale ?? null"
@@ -127,7 +127,7 @@ class WexioWidgetComponent {
     [attr.open]="open == null ? null : open ? 'true' : 'false'"
   ></wexio-widget>`, isInline: true });
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "18.2.14", ngImport: i0, type: WexioWidgetComponent, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.3.35", ngImport: i0, type: WexioWidgetComponent, decorators: [{
             type: Component,
             args: [{
                     standalone: true,

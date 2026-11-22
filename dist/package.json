@@ -1,6 +1,6 @@
 {
   "name": "@wexio/messenger-widget-angular",
-  "version": "1.9.3",
+  "version": "1.9.4",
   "description": "Angular standalone component embed for the Wexio web messenger. Thin wrapper around the <wexio-widget> custom element — same WidgetShell runtime, same Shadow-DOM isolation.",
   "license": "MIT",
   "private": false,
@@ -11,9 +11,7 @@
   "exports": {
     ".": {
       "types": "./index.d.ts",
-      "default": "./fesm2022/wexio-messenger-widget-angular.mjs",
-      "esm2022": "./esm2022/wexio-messenger-widget-angular.mjs",
-      "esm": "./esm2022/wexio-messenger-widget-angular.mjs"
+      "default": "./fesm2022/wexio-messenger-widget-angular.mjs"
     },
     "./package.json": {
       "default": "./package.json"
